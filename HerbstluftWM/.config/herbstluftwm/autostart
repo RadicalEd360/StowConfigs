@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+#
+#    ____  ___)                               
+#   (, /   /          /)         /)     /)    
+#     /---/   _  __  (/_ _  _/_ //     // _/_ 
+#  ) /   (___(/_/ (_/_) /_)_(__(/_(_(_/(_ (__ 
+# (_/                                /)       
+#                                   (/        
+#############################################################################################################
+# Init                #{{{
+##########################
+
+hc() {
+    cmds="$cmds , $@"
+}
+
+hc emit_hook reload
+xsetroot -solid '#222222'
+hc pad 0 28 0 0
+hc keyunbind --all
+
+##########################################################################################################}}}
+# startup execs       #{{{
+##########################
+
+xrdb $HOME/.Xresources
+
+source $HOME/.config/wallpaper
+wal -i ${HCWAL:-$HOME/Pictures/Wallpapers}
+source $HOME/.cache/wal/colors.sh
+
+killall -q compton 
+compton &
+
+killall -q dunst
+dunst -conf /home/metax/.config/dunst/dunstrc &
+
+killall -q polybar
+polybar -r top &
+
+##########################################################################################################}}}
+# keybindings         #{{{
+##########################
+
+# Use the super key as the main modifier
+Mod=Mod4
+
+# set up tags
+tag_names=( {1..9} )
+tag_keys=( {1..9} 0 )
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Mod-$key" use_index "$i"
+        hc keybind "$Mod-Shift-$key" chain .-. move_index "$i" .-. use_index "$i"
+    fi
+done
+
+# media-keys
+hc keybind XF86AudioLowerVolume spawn amixer -D pulse sset Master 5%-
+hc keybind XF86AudioRaiseVolume spawn amixer -D pulse sset Master 5%+
+hc keybind XF86AudioMute        spawn amixer -D pulse sset Master toggle
+hc keybind XF86AudioNext        spawn cmus-remote -n
+hc keybind XF86AudioPrev        spawn cmus-remote -r
+hc keybind XF86AudioPlay        spawn cmus-remote -u
+hc keybind XF86AudioStop        spawn cmus-remote -s
+
+# winmanager
+hc keybind $Mod-Shift-q         quit
+hc keybind $Mod-Shift-r         reload
+hc keybind $Mod-Shift-c         close_and_remove
+hc keybind $Mod-c               close
+hc keybind $Mod-s               floating toggle
+
+# spawns
+hc keybind $Mod-Shift-F12       spawn scrot '/media/TOTORO/Pictures/Screenshots/%Y-%m-%d_%k-%M-%S.png'
+hc keybind $Mod-d               spawn rofi -show drun
+hc keybind $Mod-Return          spawn ${TERMINAL:-xterm}
+hc keybind $Mod-b               spawn ${BROWSER:-opera}
+
+# focusing windows
+hc keybind $Mod-Left            focus left
+hc keybind $Mod-Down            focus down
+hc keybind $Mod-Up              focus up
+hc keybind $Mod-Right           focus right
+hc keybind $Mod-h               focus left
+hc keybind $Mod-j               focus down
+hc keybind $Mod-k               focus up
+hc keybind $Mod-l               focus right
+
+# shifting windows
+hc keybind $Mod-Shift-Left      shift left
+hc keybind $Mod-Shift-Down      shift down
+hc keybind $Mod-Shift-Up        shift up
+hc keybind $Mod-Shift-Right     shift right
+hc keybind $Mod-Shift-h         shift left
+hc keybind $Mod-Shift-j         shift down
+hc keybind $Mod-Shift-k         shift up
+hc keybind $Mod-Shift-l         shift right
+
+
+# frames
+hc keybind $Mod-Control-space   split explode
+hc keybind $Mod-u               chain .-. split bottom 0.5 .-. focus down
+hc keybind $Mod-o               chain .-. split right  0.5 .-. focus right
+hc keybind $Mod-Shift-u         chain .-. split bottom 0.5 .-. shift_edge down
+hc keybind $Mod-Shift-o         chain .-. split right  0.5 .-. shift_edge right
+hc keybind $Mod-a               set_layout horizontal
+hc keybind $Mod-v               set_layout vertical
+hc keybind $Mod-g               set_layout grid
+hc keybind $Mod-w               set_layout max
+hc keybind $Mod-Shift-space     cycle_layout
+hc keybind $Mod-x               remove
+
+# windows
+hc keybind $Mod-f               fullscreen toggle
+hc keybind $Mod-p               pseudotile toggle
+hc keybind $Mod-Tab             cycle_all +1
+hc keybind $Mod-Shift-Tab       cycle_all -1
+hc keybind $Mod-i               jumpto urgent
+
+# frame resizing
+resizestep=0.05
+hc keybind $Mod-Control-h       resize left +$resizestep
+hc keybind $Mod-Control-j       resize down +$resizestep
+hc keybind $Mod-Control-k       resize up +$resizestep
+hc keybind $Mod-Control-l       resize right +$resizestep
+hc keybind $Mod-Control-Left    resize left +$resizestep
+hc keybind $Mod-Control-Down    resize down +$resizestep
+hc keybind $Mod-Control-Up      resize up +$resizestep
+hc keybind $Mod-Control-Right   resize right +$resizestep
+
+# tags
+hc keybind $Mod-period          use_index +1 --skip-visible
+hc keybind $Mod-comma           use_index -1 --skip-visible
+hc keybind $Mod-Shift-period    chain .-. move_index +1 .-. use_index +1
+hc keybind $Mod-Shift-comma     chain .-. move_index -1 .-. use_index -1
+
+# mouse
+hc mouseunbind --all
+hc mousebind $Mod-Button1       move
+hc mousebind $Mod-Button2       zoom
+hc mousebind $Mod-Button3       resize
+
+# monitors
+hc keybind $Mod-BackSpace       cycle_monitor
+
+##########################################################################################################}}}
+# theming             #{{{
+##########################
+
+# frames
+#hc set frame_border_active_color  $color11
+#hc set frame_border_normal_color  $color1
+#hc set frame_bg_normal_color      $color2
+#hc set frame_bg_active_color      $color3
+#hc set frame_active_opacity       100
+#hc set frame_normal_opacity       0
+#hc set frame_transparent_width    1
+#hc set frame_border_normal_color  $color1
+hc set frame_border_width         0
+hc set frame_bg_transparent       1
+hc set frame_gap                  0
+hc set frame_padding              0
+
+# windows
+hc set window_border_active_color $color5
+hc set window_border_normal_color $color0
+hc set window_border_width        5 
+hc set window_gap                 30
+
+# other
+hc set smart_window_surroundings  0
+hc set smart_frame_surroundings   0
+hc set mouse_recenter_gap         0
+
+##########################################################################################################}}}
+# rules               #{{{
+##########################
+
+hc unrule -F
+hc rule focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+# hc rule class~'[Pp]olybar' manage=off
+
+hc unlock
+
+herbstclient set tree_style '╾│ ├╰╼─╮'
+herbstclient chain $cmds &
+##########################################################################################################}}}

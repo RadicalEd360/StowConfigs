@@ -1,0 +1,49 @@
+!  __   __)                                
+! (,  |/                                   
+!     |   __   _  _   ___    __  _   _  _  
+!  ) /|_ / (__(/_/_)_(_)(_(_/ (_(___(/_/_)_
+! (_/                                      
+
+!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!  xterm !!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+xterm*selectToClipboard: true
+xterm*locale          : true
+xterm*faceName        : Terminus:size=11
+xterm*.letterSpace    : 0
+xterm*.geometry       : 80x25
+xterm*.buffered       : true
+xterm*.scrollbar      : false
+xterm*.internalBorder : 15
+xterm*.thickness      : 5
+xterm*termName        : xterm-256color
+xterm*eightBitInput   : false
+xterm*eightBitOutput  : true
+
+!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!  rofi  !!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+rofi.fake-transparency : false
+rofi.font              : Source Code Pro 12
+rofi.columns           : 1
+rofi.separator-style   : none
+rofi.hide-scrollbar    : true
+rofi.location          : 0
+rofi.padding           : 200
+rofi.fullscreen        : true
+rofi.width             : 1350
+rofi.lines             : 12
+
+!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!  fonts !!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+Xft.dpi       : 96
+Xft.antialias : true
+Xft.rgba      : rgb
+Xft.hinting   : true
+Xft.hintstyle : hintslight
+Xft.autohint  : false
+Xft.lcdfilter : lcddefault
