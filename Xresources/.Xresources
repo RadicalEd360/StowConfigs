@@ -10,7 +10,8 @@
 
 xterm*selectToClipboard: true
 xterm*locale          : true
-xterm*faceName        : Terminus:size=11
+xterm*faceName        : DejaVu Sans Mono
+xterm*faceSize        : 12
 xterm*.letterSpace    : 0
 xterm*.geometry       : 80x25
 xterm*.buffered       : true

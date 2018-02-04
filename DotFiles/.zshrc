@@ -5,4 +5,9 @@ alias cfg-dunst='vim $HOME/.config/dunst/dunstrc'
 
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh
+
 export PATH=$PATH:$HOME/bin
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+
+transset-df -a > /dev/null

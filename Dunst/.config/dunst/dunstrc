@@ -177,7 +177,7 @@
     max_icon_size = 128
 
     # Paths to default icons.
-    icon_path = $HOME/.config/dunst/icons:/usr/share/icons/special/Buuf-Deuce/128x128/status/:/usr/share/icons/special/Buuf-Deuce/128x128/devices/
+    icon_path = /home/metax/.config/dunst/icons:/usr/share/icons/special/Buuf-Deuce/128x128/status/:/usr/share/icons/special/Buuf-Deuce/128x128/devices/
 
     ### History ###
 
@@ -208,7 +208,7 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = true
+    startup_notification = false
 
     ### Legacy
 

@@ -66,6 +66,8 @@ hc keybind XF86AudioNext        spawn cmus-remote -n
 hc keybind XF86AudioPrev        spawn cmus-remote -r
 hc keybind XF86AudioPlay        spawn cmus-remote -u
 hc keybind XF86AudioStop        spawn cmus-remote -s
+hc keybind $Mod-minus           spawn amixer -D pulse sset Master 5%-
+hc keybind $Mod-equal           spawn amixer -D pulse sset Master 5%+
 
 # winmanager
 hc keybind $Mod-Shift-q         quit
@@ -78,7 +80,7 @@ hc keybind $Mod-s               floating toggle
 hc keybind $Mod-Shift-F12       spawn scrot '/media/TOTORO/Pictures/Screenshots/%Y-%m-%d_%k-%M-%S.png'
 hc keybind $Mod-d               spawn rofi -show drun
 hc keybind $Mod-Return          spawn ${TERMINAL:-xterm}
-hc keybind $Mod-b               spawn ${BROWSER:-opera}
+hc keybind $Mod-b               spawn ${BROWSER:-qutebrowser}
 
 # focusing windows
 hc keybind $Mod-Left            focus left
@@ -120,6 +122,8 @@ hc keybind $Mod-p               pseudotile toggle
 hc keybind $Mod-Tab             cycle_all +1
 hc keybind $Mod-Shift-Tab       cycle_all -1
 hc keybind $Mod-i               jumpto urgent
+hc keybind $Mod-t               spawn transset-df -a
+hc keybind $Mod-Shift-t               spawn transset-df -a --dec
 
 # frame resizing
 resizestep=0.05
