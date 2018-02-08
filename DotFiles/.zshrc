@@ -10,4 +10,4 @@ export PATH=$PATH:$HOME/bin
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
-transset-df -a > /dev/null
+#transset-df -a > /dev/null

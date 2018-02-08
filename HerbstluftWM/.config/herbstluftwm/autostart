@@ -66,6 +66,7 @@ hc keybind XF86AudioNext        spawn cmus-remote -n
 hc keybind XF86AudioPrev        spawn cmus-remote -r
 hc keybind XF86AudioPlay        spawn cmus-remote -u
 hc keybind XF86AudioStop        spawn cmus-remote -s
+hc keybind XF86Tools            spawn cmusopen
 hc keybind $Mod-minus           spawn amixer -D pulse sset Master 5%-
 hc keybind $Mod-equal           spawn amixer -D pulse sset Master 5%+
 
@@ -81,6 +82,9 @@ hc keybind $Mod-Shift-F12       spawn scrot '/media/TOTORO/Pictures/Screenshots/
 hc keybind $Mod-d               spawn rofi -show drun
 hc keybind $Mod-Return          spawn ${TERMINAL:-xterm}
 hc keybind $Mod-b               spawn ${BROWSER:-qutebrowser}
+hc keybind $Mod-y               spawn xterm mpsyt
+hc keybind $Mod-r               spawn xterm ranger
+hc keybind $Mod-Shift-v         spawn projectM-pulseaudio
 
 # focusing windows
 hc keybind $Mod-Left            focus left
