@@ -3,5 +3,5 @@ echo HCWAL=$1 > $HOME/.config/wallpaper
 herbstclient reload
 dir=$(dirname $1)
 sleep 2
-#echo HCWAL=$dir > $HOME/.config/wallpaper
-echo "" > $HOME/.config/wallpaper
+echo HCWAL=$dir > $HOME/.config/wallpaper
+#echo "" > $HOME/.config/wallpaper

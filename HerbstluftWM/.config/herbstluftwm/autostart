@@ -37,7 +37,7 @@ dunst -conf /home/metax/.config/dunst/dunstrc &
 
 killall -q polybar
 polybar -r top &
-
+sleep 1 && transset-df -n polybar-top-makemetransparrent
 ##########################################################################################################}}}
 # keybindings         #{{{
 ##########################

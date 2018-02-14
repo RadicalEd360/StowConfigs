@@ -4,26 +4,33 @@
 !  ) /|_ / (__(/_/_)_(_)(_(_/ (_(___(/_/_)_
 ! (_/                                      
 
-!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!  xterm !!!!!!!!!!
+!!!!!!  xterm !!!!!!!!!!{{{
 !!!!!!!!!!!!!!!!!!!!!!!!
 
+!clipboard
 xterm*selectToClipboard: true
+!utf8
 xterm*locale          : true
-xterm*faceName        : DejaVu Sans Mono
+!font
+xterm*faceName        : DejaVu Sans Mono 
 xterm*faceSize        : 12
 xterm*.letterSpace    : 0
-xterm*.geometry       : 80x25
+!terminal settings
 xterm*.buffered       : true
 xterm*.scrollbar      : false
+xterm*.saveLines      : 4096
 xterm*.internalBorder : 15
 xterm*.thickness      : 5
 xterm*termName        : xterm-256color
+!alt key
 xterm*eightBitInput   : false
 xterm*eightBitOutput  : true
+!backspace for emacs
+xterm*backarrowKey    : false
+xterm.ttymodes        : erase ^?
 
-!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!  rofi  !!!!!!!!!!
+/*}}}*/
+!!!!!!  rofi  !!!!!!!!!!{{{
 !!!!!!!!!!!!!!!!!!!!!!!!
 
 rofi.fake-transparency : false
@@ -36,9 +43,8 @@ rofi.padding           : 200
 rofi.fullscreen        : true
 rofi.width             : 1350
 rofi.lines             : 12
-
-!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!  fonts !!!!!!!!!!
+/*}}}*/
+!!!!!!  fonts !!!!!!!!!!{{{
 !!!!!!!!!!!!!!!!!!!!!!!!
 
 Xft.dpi       : 96
@@ -48,3 +54,4 @@ Xft.hinting   : true
 Xft.hintstyle : hintslight
 Xft.autohint  : false
 Xft.lcdfilter : lcddefault
+/*}}}*/

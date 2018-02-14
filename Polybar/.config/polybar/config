@@ -6,6 +6,8 @@
 ; (_/            (_/               
 ;------------------------------------------------------------------------------------------------------------
 /*{{{*/------Init
+
+
 [colors]
 foreground = ${xrdb:color7}
 foreground2 = ${xrdb:color5}
@@ -14,19 +16,27 @@ background = ${xrdb:color0}
 ;------------------------------------------------------
 
 [global/wm]
-margin-top        = 0
-margin-bottom     = 0
-override-redirect = true
+;override-redirect = true
 
 /*}}}*/
 /*{{{*/------Bars
 [bar/top]
-;monitor  = HDMI-1
+monitor          = HDMI-1
+monitor-fallback = HDMI-0
+wm-name  = polybar-top-makemetransparrent
 
-width    = 98%
-height   = 38
-offset-x = 1%
+width    = 100%
+height   = 25
+offset-x = 0%
 offset-y = 1%
+padding  = 10
+border-bottom-size = 5
+border-bottom-color= ${colors.foreground2}
+border-top-size = 5
+border-top-color= ${colors.foreground2}
+
+line-size = 10
+line-color= #ffffff
 
 locale     = en_US.UTF-8
 background = ${colors.background}
@@ -34,28 +44,19 @@ foreground = ${colors.foreground}
 
 font-0 = DejaVu Sans Mono:size=8
 font-1 = NotoSans-Regular
-font-2 = Wuncon Siji:size=15
-font-3 = Font Awesome 5 Free:size=15
+font-2 = Wuncon Siji:size=12
+font-3 = Font Awesome 5 Free:size=12
 font-4 = Noto Emoji
-font-5 = Font Awesome 5 Brands:size=15
-font-6 = Noto Sans Symbols:size=15:2
-font-7 = Noto Sans Symbols2:size=15
+font-5 = Font Awesome 5 Brands:size=12
+font-6 = Noto Sans Symbols:size=12:2
+font-7 = Noto Sans Symbols2:size=12
 
+separator      = |
+module-margin  = 2
 modules-left   = volume date time cpu
 modules-center = hlws
 modules-right  = cmusnp eth powermenu
 
-tray-position    = left
-tray-padding     = 2
-tray-transparent = true
-tray-detached    = true 
-tray-background  = ${colors.background}
-
-spacing             = 1
-padding-left        = 0
-padding-right       = 0
-module-margin-left  = 0
-module-margin-right = 0
 /*}}}*/
 /*{{{*/------Modules
 ;------------------------------------------------------
@@ -65,10 +66,7 @@ master-soundcard = pulse
 format-volume-prefix            = "⯭ "
 format-volume-prefix-foreground = ${colors.foreground2}
 format-volume                   = <ramp-volume><label-volume>
-format-volume-background        = ${colors.background}
-format-volume-padding           = 2
 ramp-volume-foreground          = ${colors.foreground2}
-label-muted-padding             = 2
 label-muted                     = muted
 label-muted-foreground          = ${colors.foreground2}
 
@@ -89,8 +87,6 @@ interval                 = 500
 date                     = "%a %m/%d/%Y"
 format-prefix            = " "
 format-prefix-foreground = ${colors.foreground2}
-format-background        = ${colors.background}
-format-padding           = 2
 
 [module/time]
 type                     = internal/date
@@ -98,8 +94,6 @@ interval                 = 1
 date                     = "%I:%M:%S"
 format-prefix            = " "
 format-prefix-foreground = ${colors.foreground2}
-format-background        = ${colors.background}
-format-padding           = 2
 
 ;------------------------------------------------------
 
@@ -136,10 +130,7 @@ type = custom/menu
 
 label-open                 = 
 label-open-foreground      = ${colors.foreground2}
-label-open-background      = ${colors.background}
-label-open-padding         = 2
 label-close                = 
-;label-close-padding        = 2
 label-close-foreground     = ${colors.foreground2}
 label-separator            = |
 label-separator-foreground = #666666
@@ -179,8 +170,6 @@ scroll-up         = exec herbstclient use_index -1
 interval          = 0.3
 label-font        = 2
 format-foreground = ${colors.foreground2}
-format-background = ${colors.background}
-format-padding    = 2
 
 ;------------------------------------------------------
 
@@ -192,8 +181,6 @@ interval          = 1
 click-left        = cmus-remote -u
 click-right       = herbstclient use 9
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-padding    = 1
 
 ;------------------------------------------------------
 
@@ -202,8 +189,6 @@ type                     = internal/cpu
 label                    = %percentage-cores%
 format-prefix            = " "
 format-prefix-foreground = ${colors.foreground2}
-format-background        = ${colors.background}
-format-padding           = 2
 
 ;------------------------------------------------------
 /*}}}*/
