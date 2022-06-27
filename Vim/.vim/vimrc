@@ -1,9 +1,9 @@
-execute pathogen#infect()
 syntax on
-filetype plugin indent on
-
+au BufNewFile,BufReadPost *.vash set syntax=html
 set number
 set colorcolumn=110
 set foldmethod=marker
 set nowrap
-set tabstop=4
+set tabstop=2
+set shiftwidth=2
+set vb t_vb=

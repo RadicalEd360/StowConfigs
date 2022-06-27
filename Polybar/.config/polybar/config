@@ -164,7 +164,7 @@ menu-3-1-exec = menu-open-0
 
 [module/hlws]
 type              = custom/script
-exec              = python2.7 ~/bin/hlws.py
+exec              = python2.7 ~/.local/bin/hlws.py
 scroll-down       = exec herbstclient use_index +1
 scroll-up         = exec herbstclient use_index -1
 interval          = 0.3
@@ -175,7 +175,7 @@ format-foreground = ${colors.foreground2}
 
 [module/cmusnp]
 type              = custom/script
-exec              = ~/bin/cmusnp.py
+exec              = ~/.local/bin/cmusnp.py
 exec-if           = pgrep cmus > /dev/null
 interval          = 1
 click-left        = cmus-remote -u

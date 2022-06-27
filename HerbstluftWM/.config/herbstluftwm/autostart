@@ -78,7 +78,7 @@ hc keybind $Mod-c               close
 hc keybind $Mod-s               floating toggle
 
 # spawns
-hc keybind $Mod-Shift-F12       spawn scrot '/media/TOTORO/Pictures/Screenshots/%Y-%m-%d_%k-%M-%S.png'
+hc keybind $Mod-Shift-F12       spawn scrot '~/Pictures/Screenshots/%Y-%m-%d_%k-%M-%S.png'
 hc keybind $Mod-d               spawn rofi -show drun
 hc keybind $Mod-Return          spawn ${TERMINAL:-xterm}
 hc keybind $Mod-b               spawn ${BROWSER:-qutebrowser}
