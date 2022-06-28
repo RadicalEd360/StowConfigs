@@ -1,6 +1,6 @@
 # Stowed Configuration Files
 
-these files are used as in combination with GNU stow to get up and running really quickly.
+These files are used in combination with stow to get up and running very quickly.
 
 I will be improving upon them as time goes on.
 
