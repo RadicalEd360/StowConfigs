@@ -1,3 +1,4 @@
+# http://zrajm.org/programs/irssi-scripts/fifo_remote.pl-0.5
 # fifo_remote.pl -- send commands to Irssi through named pipe/fifo
 #
 # DESCRIPTION
@@ -180,13 +181,13 @@ sub destroy_fifo($) {                          # [2004-08-14]
 sub absolute_path($) {                         # [2004-08-14] -- [2004-08-15]
     my ($file) = @_;                           #
     return '' if $file eq '';                  #   don't modify empty value
-    $file =~ s¶^(~[^/]*)¶                      #   expand any leading tilde
+    $file =~ sÂ¶^(~[^/]*)Â¶                      #   expand any leading tilde
         my $x;                                 #     WORKAROUND: glob()
         until($x = glob($1)) { };              #       sometimes return empty
         $x;                                    #       string -- avoid that
-    ¶ex;                                       #
+    Â¶ex;                                       #
     $file = Irssi::get_irssi_dir() . "/$file"  #     if full path is not given
-        unless $file =~ m¶^/¶;                 #       prepend irssi config path
+        unless $file =~ mÂ¶^/Â¶;                 #       prepend irssi config path
         # FIXME: clean up multiple slashes, and occuring `/./' and `/../'.
         # this sub used in: fifo_remote.pl, xcuses.pl
     return $file;                              #
